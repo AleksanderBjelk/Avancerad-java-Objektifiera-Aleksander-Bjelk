@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="tillägg av filer plus städ">
+    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="Jackson tillägg och källhantering.">
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/src/Tabell.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/src/Tabell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/src/sample (kopia).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/src/sample (kopia).json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/uppgift2.Gkrav.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,12 +96,20 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1701258388311</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Jackson tillägg och källhantering.">
+      <option name="closed" value="true" />
+      <created>1701265170056</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1701265170056</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="tillägg av filer plus städ" />
-    <option name="LAST_COMMIT_MESSAGE" value="tillägg av filer plus städ" />
+    <MESSAGE value="Jackson tillägg och källhantering." />
+    <option name="LAST_COMMIT_MESSAGE" value="Jackson tillägg och källhantering." />
   </component>
 </project>
