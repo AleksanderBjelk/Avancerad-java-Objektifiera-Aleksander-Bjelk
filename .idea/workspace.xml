@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c8d7352-4878-45da-b766-746a3a26fdb2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Avancerad-java-Objektifiera-Aleksander-Bjelk/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Avancerad-java-Objektifiera-Aleksander-Bjelk/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Avancerad-java-Objektifiera-Aleksander-Bjelk/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Avancerad-java-Objektifiera-Aleksander-Bjelk/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Avancerad-java-Objektifiera-Aleksander-Bjelk/Avancerad-java-Objektifiera-Aleksander-Bjelk.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +17,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2YnZ6jP461KXwOsEzJNokctAbBm" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -40,6 +34,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/aleksanderbjelk/Documents/GitHub/Avancerad-java-Objektifiera-Aleksander-Bjelk",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
