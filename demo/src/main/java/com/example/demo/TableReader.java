@@ -1,11 +1,5 @@
 package com.example.demo;
 
-//import com.eclipsesource.json*:
-
-//JFileChooser j = new JFileChosser(currentDirectoryPath:"src")
-//j.showOpenDialog (parent:null);
-// sout (j.getSelectedFile().getPath());
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
