@@ -19,5 +19,6 @@
 
 
    <Button mnemonicParsing="false" onAction="#buttonOnclick" text="File Explorer" />
+   <Button mnemonicParsing="false" onAction="#onSaveButton" text="Button" />
 
 </VBox>

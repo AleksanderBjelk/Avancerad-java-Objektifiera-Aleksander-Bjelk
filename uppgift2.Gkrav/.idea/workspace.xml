@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deb3dffc-2937-4393-8c65-c4a8b8d8b1e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/eclipsesource_minimal_json.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tabell.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tabell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample (kopia).csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample (kopia).json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uppgift2.Gkrav.iml" afterDir="false" />
+    <list default="true" id="deb3dffc-2937-4393-8c65-c4a8b8d8b1e1" name="Changes" comment="Ett försök på G krav...">
       <change beforePath="$PROJECT_DIR$/../demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo/src/main/java/com/example/demo/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/src/main/java/com/example/demo/TableController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +55,18 @@
       <option name="presentableId" value="Default" />
       <updated>1701265342355</updated>
     </task>
+    <task id="LOCAL−00001" summary="Ett försök på G krav...">
+      <option name="closed" value="true" />
+      <created>1701272458484</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1701272458484</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ett försök på G krav..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ett försök på G krav..." />
   </component>
 </project>

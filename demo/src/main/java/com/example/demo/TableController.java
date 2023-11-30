@@ -11,9 +11,18 @@ import java.io.File;
 import static com.example.demo.TableReader.scene;
 
 public class TableController {
+    //observerable list
+    //cellvaluefactory
+    //Simple
 
     @FXML
     private TableView<?> Table;
+
+    @FXML
+    void onSaveButton(ActionEvent event) {
+
+    }
+
 
     @FXML
     void buttonOnclick(ActionEvent event) {
