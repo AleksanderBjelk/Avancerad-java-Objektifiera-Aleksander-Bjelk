@@ -1,12 +1,15 @@
 package com.example.demo;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.stage.FileChooser;
 import javafx.scene.control.TableView;
+import com.eclipsesource.json.*;
 
 import java.io.File;
+import java.util.Scanner;
 
 import static com.example.demo.TableReader.scene;
 
@@ -15,28 +18,89 @@ public class TableController {
     //cellvaluefactory
     //Simple
 
+
+
     @FXML
-    private TableView<?> Table;
+    private TableView<JsonObject> Table;
 
     @FXML
     void onSaveButton(ActionEvent event) {
 
     }
 
-
     @FXML
-    void buttonOnclick(ActionEvent event) {
+    String selectFileFromExplorer(ActionEvent event) {
         FileChooser fc = new FileChooser(); //
         fc.setInitialDirectory(new File("src/main/java/com/example/demo"));
-        fc.showOpenDialog(scene.getWindow());
-    File file = fc.showOpenDialog(scene.getWindow());
+        File file = fc.showOpenDialog(scene.getWindow());
         if (file != null) {
-        System.out.println(file.getPath());
 
-    } else  {
-        System.out.println("Error");
+            File temp = new File(file.getPath());
+             System.out.println(file.getPath());
+            System.out.println(file.getPath());
+
+            Scanner scan = null;
+            try {
+                scan = new Scanner(temp);
+            } catch (Exception e) {
+                return null;
+            }
+            String data = "";
+            while (scan.hasNext()){
+                data += scan.next();
+            }
+
+            JsonValue jv = Json.parse(data);
+
+            JsonArray ja = jv.asArray();
+
+
+            JsonObject columnNames =ja.get(0).asObject();
+
+
+            for (String cName : columnNames.names()){
+                String val = columnNames.get(cName).asString();
+                Table.getColumns().add(new TableColumn<>(val));
+
+
+            }
+
+
+            ObservableList<JsonObject>cells= FXCollections.observableArrayList();
+            for (int i = 1; i < ja.size(); i++) {
+            //String val = ja.get(i).asObject();
+
+                JsonObject jo = ja.get(i).asObject();
+                cells.add(jo);
+
+            }
+
+            Table.setItems(cells);
+
+            /*for (int i = 0; i < ja.size()-1; i++) {
+                JsonObject j= ja.get(i).asObject();
+                System.out.println(j.get("Item"));
+                System.out.println(j.get("Amount per unit"));
+                System.out.println(j.get("Total amount"));
+                System.out.println(j.get("Item"));
+                System.out.println(j.get("Amount per unit"));
+                System.out.println(j.get("Total amount"));
+            }*/
+
+
+            return data;
         }
+        return null;
     }
+
+    public static void processJson(String data){
+
+
+    }
+    public static void processCsv(String data){
+
+    }
+
 }
 
 /* Källhantering, dels för att hitta så man kan läsa filer med Java FX men även hur jackson paketet funkar
