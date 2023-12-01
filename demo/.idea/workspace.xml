@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="fixar header">
+    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="läser CSV filen men får inte in den i TableView, har även städat kod och lagt in json lösningen i en metod">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +142,14 @@
       <option name="presentableId" value="LOCAL−00008" />
       <updated>1701444471196</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL−00009" summary="läser CSV filen men får inte in den i TableView, har även städat kod och lagt in json lösningen i en metod">
+      <option name="closed" value="true" />
+      <created>1701451256660</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1701451256660</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -160,6 +165,7 @@
     <MESSAGE value="testar json" />
     <MESSAGE value="JSON MADDAFAKKA" />
     <MESSAGE value="fixar header" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixar header" />
+    <MESSAGE value="läser CSV filen men får inte in den i TableView, har även städat kod och lagt in json lösningen i en metod" />
+    <option name="LAST_COMMIT_MESSAGE" value="läser CSV filen men får inte in den i TableView, har även städat kod och lagt in json lösningen i en metod" />
   </component>
 </project>

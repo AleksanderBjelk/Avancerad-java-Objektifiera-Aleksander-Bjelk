@@ -23,8 +23,10 @@ import static com.example.demo.TableReader.scene;
 public class TableController {
 
     @FXML
-    private TableView< JsonObject> Table;
+    private TableView< JsonObject> Table; //en tableview som visar Json data
 
+
+    //en knapp för att spara data
     @FXML
     void onSaveButton(ActionEvent event) {
 
@@ -47,6 +49,7 @@ public class TableController {
         }
     }
 
+    //metod för att skriva data till en fil
     private void writeFile(File file) {
 
         try {
@@ -97,6 +100,7 @@ public class TableController {
         }
     }
 
+    //metod för att välja en fil genom filutforskaren.
     public static String getFileExtension(File file) {
         String fileName = file.getName();
         int dotIndex = fileName.lastIndexOf('.');
@@ -106,6 +110,7 @@ public class TableController {
         return "";
     }
 
+    //behandlar då den filen som en Json fil eller csv fil
     @FXML
     public String selectFileFromExplorer(ActionEvent event) {
         FileChooser fc = new FileChooser();
@@ -117,8 +122,6 @@ public class TableController {
             if ("json".equalsIgnoreCase(fileExtension)) {
                 JsonObject columnNames = processJson(file);
                 if (columnNames != null) {
-                    // Skapa TableColumn och lägg till i tabellen
-                    // ...
                 }
             } else if ("csv".equalsIgnoreCase(fileExtension)) {
                 processCsv(file);
@@ -131,6 +134,7 @@ public class TableController {
     //Straight up cancer. 11 timmar bara för denna metoden.
     public  JsonObject processJson(File file) {
         try {
+            //en temporär fil
             File temp = new File(file.getPath());
             Scanner scan = new Scanner(temp);
             String data = "";
@@ -138,14 +142,19 @@ public class TableController {
                 data += scan.next();
             }
 
+            //parsar
             JsonValue jv = Json.parse(data);
             JsonArray ja = jv.asArray();
 
+            //hämtar dem första namnen för att få dem som kolumn
             JsonObject columnNames = ja.get(0).asObject();
+
+            //skapar kolumner för TableView baserat på namnen i JSON
             for (String columnNameKey : columnNames.names()){
                 String columnNameValue = columnNames.get(columnNameKey).asString();
                 TableColumn tc = new TableColumn(columnNameValue);
 
+                //definierar hur cellvärden ska hämtas och läggas till i kolumnenn
                 tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<JsonObject, String>, ObservableValue<String>>() {
                     @Override
                     public ObservableValue<String> call(TableColumn.CellDataFeatures<JsonObject, String> cellData) {
@@ -153,14 +162,18 @@ public class TableController {
                         return new SimpleStringProperty(value);
                     }
                 });
+                //lägger till kolumnen i tableView
                 Table.getColumns().add(tc);
             }
 
+            //skapar listan med alla json för att tableViewn
             ObservableList<JsonObject> cells = FXCollections.observableArrayList();
             for (int i = 1; i < ja.size(); i++) {
                 JsonObject jo = ja.get(i).asObject();
                 cells.add(jo);
             }
+
+            //sätter in raderna
             Table.setItems(cells);
             return columnNames;
         } catch (FileNotFoundException e) {
@@ -173,30 +186,36 @@ public class TableController {
 
 
     public static void processCsv(File file) {
-           BufferedReader reader = null;
-           String line = "";
+        BufferedReader reader = null; //en buffer för att läsa innehålllet i filen
+        String line = ""; //en sträng för att lagra varje rad i filen
 
-           try {
-               reader = new BufferedReader(new FileReader(file));
-               while ((line = reader.readLine()) != null) {
-                   String[] row = line.split(",");
-                   for (String index : row) {
-                       System.out.printf("%-10s", index);
-                   }
-                   System.out.println();
-               }
-           } catch (Exception e) {
-               e.printStackTrace();
-           } finally {
-               try {
-                   if (reader != null) {
-                       reader.close();
-                   }
-               } catch (IOException e) {
-                   e.printStackTrace();
-               }
-           }
-       }
+        try {
+            reader = new BufferedReader(new FileReader(file)); //öppnar en läsare
+
+            //loopar geom hela filen rad för rad
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(","); //splitar vid varje komma och lägger det i en array
+
+                //loopar igenom varje värde i raden och skriver ut det på konsole
+                for (String index : row) {
+                    System.out.printf("%-10s", index);
+                }
+                System.out.println();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); //hanterar eventuella fel genom att skriva ut dem på konsolen
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }
 
 /* Källhantering, dels för att hitta så man kan läsa filer med Java FX men även hur jackson paketet funkar
