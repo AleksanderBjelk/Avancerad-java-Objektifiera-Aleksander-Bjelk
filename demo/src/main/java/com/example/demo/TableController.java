@@ -193,16 +193,17 @@ public class TableController {
         try {
             reader = new BufferedReader(new FileReader(file)); //öppnar en läsare
             String [] firstHeader = reader.readLine().split(",");
-            for (String columnNameKey : firstHeader){
-
+            for ( int j = 0; j< firstHeader.length; j++){
+                int i = j;
+                String columnNameKey=firstHeader[i];
 
                 TableColumn tc = new TableColumn(columnNameKey);
 
                 tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
                     @Override
                     public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> cellData) {
-
-                        return new SimpleStringProperty(columnNameKey);
+                          String s=cellData.getValue()[i];
+                        return new SimpleStringProperty(s);
                     }
                 });
                 //lägger till kolumnen i tableView
@@ -215,21 +216,21 @@ public class TableController {
 
             //loopar geom hela filen rad för rad
             while ((line = reader.readLine()) != null) {
-                String[] row = line.split(","); //splitar vid varje komma och lägger det i en array
+                String[] row = line.split(",",firstHeader.length); //splitar vid varje komma och lägger det i en array
                 System.out.println(Arrays.deepToString(row));
                 //loopar igenom varje värde i raden och skriver ut det på konsole
-                for (String index : row) {
+              /*  for (String index : row) {
                     System.out.printf("%-10s", index);
-                }
+                }*/
                 System.out.println();
 
 
-                System.out.println(Arrays.deepToString(row) + "HEJHEJ");
-                    cells.add(new String[]{"Alrik", "Aleksander"});
+                System.out.println(Arrays.deepToString(row) + " "+ row.length);
+                    //cells.add(new String[]{"Alrik", "Aleksander"});
                     cells.add(row);
 
 
-                    System.err.println(Arrays.deepToString(row));
+                    //System.err.println(Arrays.deepToString(row));
 
 
                 //sätter in raderna

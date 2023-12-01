@@ -20,7 +20,7 @@ public class TableReader extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(TableReader.class.getResource("hello-view.fxml"));
-         scene = new Scene(fxmlLoader.load(), 320, 240);
+         scene = new Scene(fxmlLoader.load(), 820, 1040);
         stage.setTitle("Program för att läsa filer");
         stage.setScene(scene);
         stage.setResizable(true);
