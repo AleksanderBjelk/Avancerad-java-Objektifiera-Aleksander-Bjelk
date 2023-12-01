@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="Save button tillagd och fungerande">
+    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="testar json">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" afterDir="false" />
     </list>
@@ -121,7 +121,14 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1701426735589</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="testar json">
+      <option name="closed" value="true" />
+      <created>1701434146069</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1701434146069</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -131,6 +138,7 @@
     <MESSAGE value="små saker, knapp save men funkar inte" />
     <MESSAGE value="Början på kod för att läsa Json filer" />
     <MESSAGE value="Save button tillagd och fungerande" />
-    <option name="LAST_COMMIT_MESSAGE" value="Save button tillagd och fungerande" />
+    <MESSAGE value="testar json" />
+    <option name="LAST_COMMIT_MESSAGE" value="testar json" />
   </component>
 </project>

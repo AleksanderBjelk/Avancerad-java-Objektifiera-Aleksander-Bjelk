@@ -1,19 +1,24 @@
 package com.example.demo;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.scene.control.TableView;
 import com.eclipsesource.json.*;
+import javafx.util.Callback;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+//import com.opencsv.CSVReader;
 
 import static com.example.demo.TableReader.scene;
 
@@ -26,7 +31,7 @@ public class TableController {
 
 
     @FXML
-    private TableView<String> Table;
+    private TableView< JsonObject> Table;
 
     @FXML
     void onSaveButton(ActionEvent event) {
@@ -102,9 +107,6 @@ public class TableController {
         }
     }
 
-
-
-
     @FXML
     String selectFileFromExplorer(ActionEvent event) {
         FileChooser fc = new FileChooser(); //
@@ -136,47 +138,74 @@ public class TableController {
 
             for (String cName : columnNames.names()){
                 String val = columnNames.get(cName).asString();
-                Table.getColumns().add(new TableColumn<>(val));
+                TableColumn tc = new TableColumn(cName);
+
+
+                tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<JsonObject, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<JsonObject, String> cellData) {
+                        String value = cellData.getValue().get(cName).asString();
+                        return new SimpleStringProperty(value);
+                    }
+                });
+
+                Table.getColumns().add(tc);
             }
 
-
-
             columnFileValues.addAll(columnNames.names());
-            ObservableList<String> cells = FXCollections.observableArrayList();
+            ObservableList<JsonObject> cells = FXCollections.observableArrayList();
 
             for (int i = 1; i < ja.size(); i++) {
-                JsonObject jo = ja.get(i).asObject();
-                //StringBuilder rowData = new StringBuilder();
-                String row = "";
-                for (int j = 0; j < columnFileValues.size(); j++) {
 
-                    String val = String.valueOf(jo.get(columnFileValues.get(j)));
-                    row += val;
-                    row += ",";
-                    System.out.println(val);
-                    //rowData.append(val).append(", ");
-                    cells.add(val);// Or any separator you prefer
-                }
-                cells.add(row);
-                System.out.println(row);
+                JsonObject jo = ja.get(i).asObject();
+                cells.add(jo);
+
             }
             System.out.println(cells);
             Table.setItems(cells);
-
             return data;
         }
         return null;
     }
 
-    public static void processJson(String data){
+         public static void processJson(String data){
 
 
     }
-    public static void processCsv(String data){
+   /* public static void processCsv(String data){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("com/example/demo/sample.csv");
+        File file = fileChooser.showOpenDialog(scene.getWindow());
+
+        if (file != null) {
+            try (CSVReader csvReader = new CSVReader(new FileReader(file))) {
+                String[] headers = csvReader.readNext(); // Läs första raden för att få kolumnrubrikerna
+
+                for (String header : headers) {
+                    TableColumn<ObservableList<StringProperty>, String> column = new TableColumn<>(header);
+                    Table.getColumns().add(column);
+                }
+
+                String[] nextLine;
+                while ((nextLine = csvReader.readNext()) != null) {
+                    ObservableList<StringProperty> row = FXCollections.observableArrayList();
+
+                    for (String cell : nextLine) {
+                        row.add(new SimpleStringProperty(cell));
+                    }
+
+                    Table.getItems().add(row);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
+
 
     }
 
-}
+
 
 /* Källhantering, dels för att hitta så man kan läsa filer med Java FX men även hur jackson paketet funkar
 https://central.sonatype.com/?smo=true
