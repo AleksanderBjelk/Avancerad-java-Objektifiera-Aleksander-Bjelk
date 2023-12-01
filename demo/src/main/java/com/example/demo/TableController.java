@@ -11,6 +11,8 @@ import com.eclipsesource.json.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static com.example.demo.TableReader.scene;
@@ -20,10 +22,11 @@ public class TableController {
     //cellvaluefactory
     //Simple
 
+    private static int rows = 0;
 
 
     @FXML
-    private TableView<JsonObject> Table;
+    private TableView<String> Table;
 
     @FXML
     void onSaveButton(ActionEvent event) {
@@ -48,8 +51,9 @@ public class TableController {
             System.out.println("save canceled!"); // or something else
         }
     }
-
+    private static ArrayList<String> columnFileValues= new ArrayList<>(), dataFileValues = new ArrayList<>() ;
     private void writeFile(File file) {
+
         try {
             System.out.println(file.getName());
             String[] sArray= file.getName().split("\\.");
@@ -100,11 +104,13 @@ public class TableController {
 
 
 
+
     @FXML
     String selectFileFromExplorer(ActionEvent event) {
         FileChooser fc = new FileChooser(); //
         fc.setInitialDirectory(new File("src/main/java/com/example/demo"));
         File file = fc.showOpenDialog(scene.getWindow());
+        rows = 0;
         if (file != null) {
 
             File temp = new File(file.getPath());
@@ -126,40 +132,36 @@ public class TableController {
 
             JsonArray ja = jv.asArray();
 
-
             JsonObject columnNames =ja.get(0).asObject();
-
 
             for (String cName : columnNames.names()){
                 String val = columnNames.get(cName).asString();
                 Table.getColumns().add(new TableColumn<>(val));
-
-
-
             }
 
 
-            ObservableList<JsonObject>cells= FXCollections.observableArrayList();
+
+            columnFileValues.addAll(columnNames.names());
+            ObservableList<String> cells = FXCollections.observableArrayList();
+
             for (int i = 1; i < ja.size(); i++) {
-            //String val = ja.get(i).asObject();
-
                 JsonObject jo = ja.get(i).asObject();
-                cells.add(jo);
+                //StringBuilder rowData = new StringBuilder();
+                String row = "";
+                for (int j = 0; j < columnFileValues.size(); j++) {
 
+                    String val = String.valueOf(jo.get(columnFileValues.get(j)));
+                    row += val;
+                    row += ",";
+                    System.out.println(val);
+                    //rowData.append(val).append(", ");
+                    cells.add(val);// Or any separator you prefer
+                }
+                cells.add(row);
+                System.out.println(row);
             }
-
+            System.out.println(cells);
             Table.setItems(cells);
-
-            /*for (int i = 0; i < ja.size()-1; i++) {
-                JsonObject j= ja.get(i).asObject();
-                System.out.println(j.get("Item"));
-                System.out.println(j.get("Amount per unit"));
-                System.out.println(j.get("Total amount"));
-                System.out.println(j.get("Item"));
-                System.out.println(j.get("Amount per unit"));
-                System.out.println(j.get("Total amount"));
-            }*/
-
 
             return data;
         }
