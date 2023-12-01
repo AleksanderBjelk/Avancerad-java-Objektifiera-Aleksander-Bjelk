@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="testar json">
+    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="JSON MADDAFAKKA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" afterDir="false" />
     </list>
@@ -128,7 +128,14 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1701434146069</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="JSON MADDAFAKKA">
+      <option name="closed" value="true" />
+      <created>1701443560993</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1701443560993</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -139,6 +146,7 @@
     <MESSAGE value="Början på kod för att läsa Json filer" />
     <MESSAGE value="Save button tillagd och fungerande" />
     <MESSAGE value="testar json" />
-    <option name="LAST_COMMIT_MESSAGE" value="testar json" />
+    <MESSAGE value="JSON MADDAFAKKA" />
+    <option name="LAST_COMMIT_MESSAGE" value="JSON MADDAFAKKA" />
   </component>
 </project>

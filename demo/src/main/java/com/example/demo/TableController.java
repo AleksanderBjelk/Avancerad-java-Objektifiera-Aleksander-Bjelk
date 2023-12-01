@@ -136,23 +136,21 @@ public class TableController {
 
             JsonObject columnNames =ja.get(0).asObject();
 
-            for (String cName : columnNames.names()){
-                String val = columnNames.get(cName).asString();
-                TableColumn tc = new TableColumn(cName);
+            for (String columnNameKey : columnNames.names()){
+                String columnNameValue = columnNames.get(columnNameKey).asString();
+                TableColumn tc = new TableColumn(columnNameValue);
 
 
                 tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<JsonObject, String>, ObservableValue<String>>() {
                     @Override
                     public ObservableValue<String> call(TableColumn.CellDataFeatures<JsonObject, String> cellData) {
-                        String value = cellData.getValue().get(cName).asString();
+                        String value = cellData.getValue().get(columnNameKey).asString();
                         return new SimpleStringProperty(value);
                     }
                 });
-
                 Table.getColumns().add(tc);
             }
 
-            columnFileValues.addAll(columnNames.names());
             ObservableList<JsonObject> cells = FXCollections.observableArrayList();
 
             for (int i = 1; i < ja.size(); i++) {
@@ -163,7 +161,7 @@ public class TableController {
             }
             System.out.println(cells);
             Table.setItems(cells);
-            return data;
+            return null;
         }
         return null;
     }
