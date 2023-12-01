@@ -13,22 +13,14 @@ import javafx.scene.control.TableView;
 import com.eclipsesource.json.*;
 import javafx.util.Callback;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-//import com.opencsv.CSVReader;
+
 
 import static com.example.demo.TableReader.scene;
 
 public class TableController {
-    //observerable list
-    //cellvaluefactory
-    //Simple
-
-    private static int rows = 0;
-
 
     @FXML
     private TableView< JsonObject> Table;
@@ -36,13 +28,12 @@ public class TableController {
     @FXML
     void onSaveButton(ActionEvent event) {
 
-        System.out.println("The user is saving a file."); // or something else
+        System.out.println("The user is saving a file.");
         FileChooser fileC = new FileChooser();
-        fileC.setInitialDirectory(new File("src/main/java/com/example/demo")); // init path annars C
+        fileC.setInitialDirectory(new File("src/main/java/com/example/demo"));
         fileC.setTitle("Save File");
 
         fileC.getExtensionFilters().addAll(
-                // new FileChooser.ExtensionFilter("TABLE FILES", "*.csv", "*.json"),
                 new FileChooser.ExtensionFilter("CSV", "*.csv"),
                 new FileChooser.ExtensionFilter("Json", "*.json"),
                 new FileChooser.ExtensionFilter("ALL FILES", "*.*")
@@ -50,13 +41,12 @@ public class TableController {
 
         File file = fileC.showSaveDialog(scene.getWindow());
         if (file != null) {
-            System.out.println(file.getPath());
             writeFile(file);
         } else  {
             System.out.println("save canceled!"); // or something else
         }
     }
-    private static ArrayList<String> columnFileValues= new ArrayList<>(), dataFileValues = new ArrayList<>() ;
+
     private void writeFile(File file) {
 
         try {
@@ -107,39 +97,54 @@ public class TableController {
         }
     }
 
+    public static String getFileExtension(File file) {
+        String fileName = file.getName();
+        int dotIndex = fileName.lastIndexOf('.');
+        if (dotIndex > 0) {
+            return fileName.substring(dotIndex + 1);
+        }
+        return "";
+    }
+
     @FXML
-    String selectFileFromExplorer(ActionEvent event) {
-        FileChooser fc = new FileChooser(); //
+    public String selectFileFromExplorer(ActionEvent event) {
+        FileChooser fc = new FileChooser();
         fc.setInitialDirectory(new File("src/main/java/com/example/demo"));
         File file = fc.showOpenDialog(scene.getWindow());
-        rows = 0;
         if (file != null) {
+            String fileExtension = getFileExtension(file);
 
-            File temp = new File(file.getPath());
-             System.out.println(file.getPath());
-            System.out.println(file.getPath());
-
-            Scanner scan = null;
-            try {
-                scan = new Scanner(temp);
-            } catch (Exception e) {
-                return null;
+            if ("json".equalsIgnoreCase(fileExtension)) {
+                JsonObject columnNames = processJson(file);
+                if (columnNames != null) {
+                    // Skapa TableColumn och lägg till i tabellen
+                    // ...
+                }
+            } else if ("csv".equalsIgnoreCase(fileExtension)) {
+                processCsv(file);
             }
+        }
+        return null;
+    }
+
+
+    //Straight up cancer. 11 timmar bara för denna metoden.
+    public  JsonObject processJson(File file) {
+        try {
+            File temp = new File(file.getPath());
+            Scanner scan = new Scanner(temp);
             String data = "";
             while (scan.hasNext()){
                 data += scan.next();
             }
 
             JsonValue jv = Json.parse(data);
-
             JsonArray ja = jv.asArray();
 
-            JsonObject columnNames =ja.get(0).asObject();
-
+            JsonObject columnNames = ja.get(0).asObject();
             for (String columnNameKey : columnNames.names()){
                 String columnNameValue = columnNames.get(columnNameKey).asString();
                 TableColumn tc = new TableColumn(columnNameValue);
-
 
                 tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<JsonObject, String>, ObservableValue<String>>() {
                     @Override
@@ -152,61 +157,52 @@ public class TableController {
             }
 
             ObservableList<JsonObject> cells = FXCollections.observableArrayList();
-
             for (int i = 1; i < ja.size(); i++) {
-
                 JsonObject jo = ja.get(i).asObject();
                 cells.add(jo);
-
             }
-            System.out.println(cells);
             Table.setItems(cells);
-            return null;
+            return columnNames;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
-         public static void processJson(String data){
 
 
-    }
-   /* public static void processCsv(String data){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("com/example/demo/sample.csv");
-        File file = fileChooser.showOpenDialog(scene.getWindow());
 
-        if (file != null) {
-            try (CSVReader csvReader = new CSVReader(new FileReader(file))) {
-                String[] headers = csvReader.readNext(); // Läs första raden för att få kolumnrubrikerna
+    public static void processCsv(File file) {
+           BufferedReader reader = null;
+           String line = "";
 
-                for (String header : headers) {
-                    TableColumn<ObservableList<StringProperty>, String> column = new TableColumn<>(header);
-                    Table.getColumns().add(column);
-                }
-
-                String[] nextLine;
-                while ((nextLine = csvReader.readNext()) != null) {
-                    ObservableList<StringProperty> row = FXCollections.observableArrayList();
-
-                    for (String cell : nextLine) {
-                        row.add(new SimpleStringProperty(cell));
-                    }
-
-                    Table.getItems().add(row);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
-
-    }
-
-
+           try {
+               reader = new BufferedReader(new FileReader(file));
+               while ((line = reader.readLine()) != null) {
+                   String[] row = line.split(",");
+                   for (String index : row) {
+                       System.out.printf("%-10s", index);
+                   }
+                   System.out.println();
+               }
+           } catch (Exception e) {
+               e.printStackTrace();
+           } finally {
+               try {
+                   if (reader != null) {
+                       reader.close();
+                   }
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }
+       }
+}
 
 /* Källhantering, dels för att hitta så man kan läsa filer med Java FX men även hur jackson paketet funkar
 https://central.sonatype.com/?smo=true
 https://medium.com/javarevisited/using-the-jackson-library-to-persist-my-javafx-todo-list-to-json-8a4b31917c09
 https://www.reddit.com/r/JavaFX/comments/wsejr5/read_a_json_file_to_a_tableview_in_javafx/
+
+https://www.youtube.com/watch?v=zKDmzKaAQro brocode om CSV hantering eftersom mina paket jag ladda ner funkade inte oavsett hur jag gjorde
  */

@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="JSON MADDAFAKKA">
+    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="fixar header">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +48,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/aleksanderbjelk/Documents/GitHub/Avancerad-java-Objektifiera-Aleksander-Bjelk/demo",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.14450866",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "configurable.group.language"
@@ -135,8 +137,18 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1701443560993</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="fixar header">
+      <option name="closed" value="true" />
+      <created>1701444471196</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1701444471196</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -147,6 +159,7 @@
     <MESSAGE value="Save button tillagd och fungerande" />
     <MESSAGE value="testar json" />
     <MESSAGE value="JSON MADDAFAKKA" />
-    <option name="LAST_COMMIT_MESSAGE" value="JSON MADDAFAKKA" />
+    <MESSAGE value="fixar header" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixar header" />
   </component>
 </project>
