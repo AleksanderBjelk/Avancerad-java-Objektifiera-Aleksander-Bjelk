@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="små saker, knapp save men funkar inte">
+    <list default="true" id="3b2ec92f-b712-41d2-b78d-e1ea9a1c24ba" name="Changes" comment="Början på kod för att läsa Json filer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/TableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/TableReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/TableReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sample.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uppgift2.Gkrav/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../uppgift2.Gkrav/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +107,14 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1701333952542</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="Början på kod för att läsa Json filer">
+      <option name="closed" value="true" />
+      <created>1701374730201</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1701374730201</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -121,6 +122,7 @@
     <MESSAGE value="tillägg av filer plus städ" />
     <MESSAGE value="Jackson tillägg och källhantering." />
     <MESSAGE value="små saker, knapp save men funkar inte" />
-    <option name="LAST_COMMIT_MESSAGE" value="små saker, knapp save men funkar inte" />
+    <MESSAGE value="Början på kod för att läsa Json filer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Början på kod för att läsa Json filer" />
   </component>
 </project>
