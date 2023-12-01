@@ -9,7 +9,8 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <TableView fx:id="Table" prefHeight="200.0" prefWidth="200.0" />
+   <TableView fx:id="csvTable" prefHeight="200.0" prefWidth="200.0" />
+   <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" />
 
 
    <Button mnemonicParsing="false" onAction="#selectFileFromExplorer" text="File Explorer" />

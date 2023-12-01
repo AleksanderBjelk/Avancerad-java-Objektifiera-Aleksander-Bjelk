@@ -1,20 +1,18 @@
 package com.example.demo;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.scene.control.TableView;
 import com.eclipsesource.json.*;
 import javafx.util.Callback;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -23,7 +21,10 @@ import static com.example.demo.TableReader.scene;
 public class TableController {
 
     @FXML
-    private TableView< JsonObject> Table; //en tableview som visar Json data
+    private TableView< JsonObject> table; //en tableview som visar Json data
+
+    @FXML
+    private TableView<String[]> csvTable;
 
 
     //en knapp för att spara data
@@ -163,7 +164,7 @@ public class TableController {
                     }
                 });
                 //lägger till kolumnen i tableView
-                Table.getColumns().add(tc);
+                table.getColumns().add(tc);
             }
 
             //skapar listan med alla json för att tableViewn
@@ -174,7 +175,7 @@ public class TableController {
             }
 
             //sätter in raderna
-            Table.setItems(cells);
+            table.setItems(cells);
             return columnNames;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -185,22 +186,55 @@ public class TableController {
 
 
 
-    public static void processCsv(File file) {
+    public  void processCsv(File file) {
         BufferedReader reader = null; //en buffer för att läsa innehålllet i filen
         String line = ""; //en sträng för att lagra varje rad i filen
 
         try {
             reader = new BufferedReader(new FileReader(file)); //öppnar en läsare
+            String [] firstHeader = reader.readLine().split(",");
+            for (String columnNameKey : firstHeader){
+
+
+                TableColumn tc = new TableColumn(columnNameKey);
+
+                tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<String[], String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<String[], String> cellData) {
+
+                        return new SimpleStringProperty(columnNameKey);
+                    }
+                });
+                //lägger till kolumnen i tableView
+                csvTable.getColumns().add(tc);
+            }
+
+
+            System.out.println(Arrays.deepToString(firstHeader));
+            ObservableList<String[]> cells = FXCollections.observableArrayList();
 
             //loopar geom hela filen rad för rad
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split(","); //splitar vid varje komma och lägger det i en array
-
+                System.out.println(Arrays.deepToString(row));
                 //loopar igenom varje värde i raden och skriver ut det på konsole
                 for (String index : row) {
                     System.out.printf("%-10s", index);
                 }
                 System.out.println();
+
+
+                System.out.println(Arrays.deepToString(row) + "HEJHEJ");
+                    cells.add(new String[]{"Alrik", "Aleksander"});
+                    cells.add(row);
+
+
+                    System.err.println(Arrays.deepToString(row));
+
+
+                //sätter in raderna
+                csvTable.setItems(cells);
+
             }
         } catch (Exception e) {
             e.printStackTrace(); //hanterar eventuella fel genom att skriva ut dem på konsolen
